@@ -1,2 +1,8 @@
-@import "tailwindcss/preflight";
-@import "tailwindcss/utilities";
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wdth,wght@50..200,200..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Special+Elite&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Inconsolata", monospace;
+  --font-secondary: "Karla", sans-serif;
+  --font-title: "Special Elite", system-ui;
+}

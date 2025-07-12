@@ -10,7 +10,7 @@ import { RiTailwindCssFill, RiNextjsFill } from "react-icons/ri";
 import { SiFlask, SiTypescript, SiPostgresql, SiRedux, SiIntellijidea, SiPycharm, SiSpringboot, SiVuetify } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { useInView } from "react-intersection-observer";
-//import { Introduction } from "./Introduction";
+import { Introduction } from "./Introduction";
 
 export const Herosection = () => {
     const { ref, inView } = useInView();
@@ -29,55 +29,54 @@ export const Herosection = () => {
         return () => clearInterval(interval)
     }, [SKILLS.length])
 
-    const FRONTEND_ICONS: IconType[] = [
-        FaReact,
-        FaHtml5,
-        FaCss3Alt,
-        IoLogoJavascript,
-        SiTypescript,
-        RiTailwindCssFill,
-        RiNextjsFill,
-        FaVuejs,
-        SiVuetify,
-        SiRedux,
-        FaSass,
+    const FRONTEND_SKILLS = [
+        { icon: FaReact, name: "React" },
+        { icon: FaHtml5, name: "HTML5" },
+        { icon: FaCss3Alt, name: "CSS3" },
+        { icon: IoLogoJavascript, name: "JavaScript" },
+        { icon: SiTypescript, name: "TypeScript" },
+        { icon: RiTailwindCssFill, name: "Tailwind CSS" },
+        { icon: RiNextjsFill, name: "Next.js" },
+        { icon: FaVuejs, name: "Vue.js" },
+        { icon: SiVuetify, name: "Vuetify" },
+        { icon: SiRedux, name: "Redux" },
+        { icon: FaSass, name: "Sass" },
     ];
 
-    const BACKEND_ICONS: IconType[] = [
-        FaPython,
-        SiFlask,
-        FaNodeJs,
-        FaJava,
-        SiSpringboot,
-        AiOutlineDotNet,
+    const BACKEND_SKILLS = [
+        { icon: FaPython, name: "Python" },
+        { icon: SiFlask, name: "Flask" },
+        { icon: FaNodeJs, name: "Node.js" },
+        { icon: FaJava, name: "Java" },
+        { icon: SiSpringboot, name: "Spring Boot" },
+        { icon: AiOutlineDotNet, name: ".NET" },
     ];
 
-    const DEVOPS_ICONS: IconType[] = [
-        SiPostgresql,
-        DiMongodb,
-        VscVscode,
-        SiPycharm,
-        SiIntellijidea,
+    const DEVOPS_SKILLS = [
+        { icon: SiPostgresql, name: "PostgreSQL" },
+        { icon: DiMongodb, name: "MongoDB" },
+        { icon: VscVscode, name: "VS Code" },
+        { icon: SiPycharm, name: "PyCharm" },
+        { icon: SiIntellijidea, name: "IntelliJ" },
     ];
 
-    // Special case for Unity which might not fit neatly into these categories
-    const OTHER_ICONS: IconType[] = [
-        FaUnity,
-    ];
 
-    const renderSkillSection = (title: string, icons: IconType[]) => (
-        <div className="mb-8">
-            <h3 className="text-lg font-semibold mb-3 text-center">{title}</h3>
-            <div className="flex flex-wrap justify-center gap-x-3 gap-y-4">
-                {icons.map((Icon, index) => (
-                    <Icon 
-                        key={index} 
-                        className="w-10 h-10 md:w-12 md:h-12 p-0 opacity-50 hover:opacity-90 transition-all duration-400" 
-                    />
+    const renderSkillSection = (title: string, skills: { icon: IconType, name: string }[]) => (
+        <div className="mb-10">
+            <h3 className="text-xl font-semibold mb-4 text-center border-b pb-2 font-title">{title}</h3>
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
+                {skills.map((skill, index) => (
+                    <div key={index} className="flex flex-col items-center">
+                        <skill.icon 
+                            className="w-10 h-10 md:w-12 md:h-12 p-0 opacity-50 hover:opacity-90 transition-all duration-400" 
+                        />
+                        <span className="text-xs mt-2 text-center">{skill.name}</span>
+                    </div>
                 ))}
             </div>
         </div>
     );
+
 
     return (
         <div className={`flex flex-col items-center font-secondary`}>
@@ -101,12 +100,11 @@ export const Herosection = () => {
             {/* <div className="hidden md:flex w-96 h-96 absolute bg-red-100 right-32 top-72"></div> */}
 
             <div className="w-4/5 my-10 md:mt-0 md:w-2/3 lg:w-1/2 p-5">
-                {renderSkillSection("Frontend", FRONTEND_ICONS)}
-                {renderSkillSection("Backend", BACKEND_ICONS)}
-                {renderSkillSection("DevOps & Tools", DEVOPS_ICONS)}
-                {OTHER_ICONS.length > 0 && renderSkillSection("Other", OTHER_ICONS)}
+                {renderSkillSection("Frontend", FRONTEND_SKILLS)}
+                {renderSkillSection("Backend", BACKEND_SKILLS)}
+                {renderSkillSection("DevOps & Tools", DEVOPS_SKILLS)}
             </div>
-            
+            <Introduction />
         </div>
     );
 }

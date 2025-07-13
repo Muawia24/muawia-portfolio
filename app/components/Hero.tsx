@@ -90,7 +90,7 @@ export const Herosection = () => {
                 priority
                 />
                 <div className="flex flex-col items-center md:items-start md:gap-y-2">
-                    <div className="animate__animated animate__fadeInDown">Hi, I'm <br /> <span className="text-start text-4xl md:text-6xl font-title">Ahmed Muawia</span> </div>
+                    <div className="animate__animated animate__fadeInDown">Hi, I&apos;m <br /> <span className="text-start text-4xl md:text-6xl font-title">Ahmed Muawia</span> </div>
                     <div className="text-2xl ml-24 md:m-0 flex gap-x-1 font-display">
                         <div className="">I build {SKILLS[textIndex]} </div>
                     </div>

@@ -1,6 +1,6 @@
 "use client";
 import { useInView } from "react-intersection-observer";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaXTwitter, FaEnvelope, FaPhone } from "react-icons/fa6";
 import { SiLeetcode } from "react-icons/si";
 import { useState } from 'react';
 
@@ -83,14 +83,14 @@ export const Contact = () => {
       url: "https://linkedin.com/in/ahmed-muawia"
     },
     {
-      icon: <FaTwitter className="w-6 h-6" />,
-      name: "Twitter",
-      url: "https://twitter.com/yourusername"
+      icon: <FaXTwitter className="w-6 h-6" />,
+      name: "X (Twitter)",
+      url: "https://x.com/0x01_Muawia"
     },
     {
       icon: <SiLeetcode className="w-6 h-6" />,
       name: "LeetCode",
-      url: "https://leetcode.com/yourusername"
+      url: "https://leetcode.com/u/Muawia/"
     }
   ];
 

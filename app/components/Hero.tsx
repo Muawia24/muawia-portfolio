@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { IconType } from "react-icons";
 import { AiOutlineDotNet } from "react-icons/ai";
 import { DiMongodb } from "react-icons/di";
-import { FaCss3Alt, FaHtml5, FaJava, FaNodeJs, FaPython, FaReact, FaSass, FaUnity, FaVuejs } from "react-icons/fa";
+import { FaCss3Alt, FaHtml5, FaJava, FaNodeJs, FaPython, FaReact, FaSass, FaVuejs } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io";
 import { RiTailwindCssFill, RiNextjsFill } from "react-icons/ri";
 import { SiFlask, SiTypescript, SiPostgresql, SiRedux, SiIntellijidea, SiPycharm, SiSpringboot, SiVuetify } from "react-icons/si";
@@ -16,10 +16,10 @@ export const Herosection = () => {
     const { ref, inView } = useInView();
     const [textIndex, setTextIndex] = useState<number>(0);
     const SKILLS = [
-        <span className="w-56 animate__animated animate__fadeInDown">PWAs</span>,
-        <span className="w-56 animate__animated animate__fadeInUp">web apps</span>,
-        <span className="w-56 animate__animated animate__fadeInDown">RESTful APIs</span>,
-        <span className="w-56 animate__animated animate__fadeInUp">anything you want!!!</span>,
+        <span key="pwa" className="w-56 animate__animated animate__fadeInDown">PWAs</span>,
+        <span key="webapps" className="w-56 animate__animated animate__fadeInUp">web apps</span>,
+        <span key="apis" className="w-56 animate__animated animate__fadeInDown">RESTful APIs</span>,
+        <span key="anything" className="w-56 animate__animated animate__fadeInUp">anything you want!!!</span>,
     ];
 
     useEffect(() => {

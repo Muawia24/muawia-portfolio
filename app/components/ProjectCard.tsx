@@ -3,6 +3,7 @@ import { GitHubLogoIcon, Link1Icon } from "@radix-ui/react-icons"
 import { useState } from "react"
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
+import Image from "next/image";
 
 export interface ProjectCardProps {
     title: string,
@@ -20,7 +21,7 @@ export const ProjectCard = ({ project }: { project: ProjectCardProps }) => {
 
     const Icon = () => {
         return (
-            <div className="w-5 h-5 hover:cursor-pointer hover:opacity-50" onClick={_ => setShowMore(!showMore)}>
+            <div className="w-5 h-5 hover:cursor-pointer hover:opacity-50" onClick={()=> setShowMore(!showMore)}>
                 {showMore ? <FaAngleUp /> : <FaAngleDown />}
             </div>
         );
@@ -30,7 +31,13 @@ export const ProjectCard = ({ project }: { project: ProjectCardProps }) => {
     return (
         <div ref={ref} className={`w-96 md:w-[500px] h-96 ${showMore ? 'h-fit' : ''} md:h-[550px] flex flex-col justify-between items-center md:mx-auto p-5 ${inView ? 'animate__animated animate__fadeIn' : ''}`}>
             <div className="relative">
-                <img src={project.projectImage} alt="ecommerce_image" className="w-full" />
+                <Image 
+                src={project.projectImage} 
+                alt={`${project.title} screenshot`}
+                width={500}
+                height={300}
+                className="w-full h-auto"
+                />
                 {project.inProgress && <div className="w-auto h-min absolute p-1 rounded left-1 bottom-1 text-white bg-[hsl(108,15%,50%)] text-sm">In progress</div>}
             </div>
             <div className="text-center text-2xl">{project.title}</div>

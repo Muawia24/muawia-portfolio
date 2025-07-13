@@ -3,6 +3,7 @@ import { GitHubLogoIcon, Link1Icon } from "@radix-ui/react-icons";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import { useState } from "react";
+import Image from "next/image";
 
 export interface BlogCardProps {
   title: string;
@@ -38,7 +39,7 @@ export const BlogCard = ({ blog }: { blog: BlogCardProps }) => {
       }`}
     >
       <div className="relative w-full">
-        <img 
+        <Image 
           src={blog.image} 
           alt={blog.title} 
           className="w-full h-48 object-cover rounded-t-lg" 

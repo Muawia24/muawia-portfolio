@@ -1,72 +1,104 @@
 "use client";
-import { GitHubLogoIcon, Link1Icon } from "@radix-ui/react-icons"
-import { useState } from "react"
-import { FaAngleDown, FaAngleUp } from "react-icons/fa";
+import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
+import { 
+  Card, 
+  CardContent, 
+  CardDescription, 
+  CardHeader, 
+  CardTitle 
+} from './Card';
+import { Badge } from "./Badg";
+import { Github, ExternalLink } from 'lucide-react';
+import { Button } from './Button';
 
 export interface ProjectCardProps {
-    title: string,
-    projectDesc: string,
-    projectImage: string,
-    tech_stack: string[],
-    product: string,
-    demo_link: string,
-    github: boolean,
-    inProgress: boolean,
+  title: string;
+  description: string;
+  techStack: string[];
+  type: string;
+  image: string;
+  codeUrl?: string;
+  demoUrl?: string;
 }
+
 export const ProjectCard = ({ project }: { project: ProjectCardProps }) => {
-    const [showMore, setShowMore] = useState(false);
-    const { ref, inView } = useInView();
+  const [showMore, setShowMore] = useState(false);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.1
+  });
 
-    const Icon = () => {
-        return (
-            <div className="w-5 h-5 hover:cursor-pointer hover:opacity-50" onClick={()=> setShowMore(!showMore)}>
-                {showMore ? <FaAngleUp /> : <FaAngleDown />}
+  return (
+    <div ref={ref} className={`transition-all duration-300 ${inView ? 'opacity-100' : 'opacity-0 translate-y-4'}`}>
+      <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg overflow-hidden h-full flex flex-col">
+        <div className="aspect-video relative overflow-hidden">
+          <Image
+            src={project.image}
+            alt={`Screenshot of ${project.title}`}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 to-blue-500/20 group-hover:scale-110 transition-transform duration-500" />
+          <div className="absolute top-4 right-4">
+            <Badge variant="secondary" className="bg-white/90 text-slate-700 dark:bg-slate-900/90 dark:text-slate-300">
+              {project.type}
+            </Badge>
+          </div>
+        </div>
+        
+        <div className="flex-grow flex flex-col">
+          <CardHeader>
+            <CardTitle className="text-xl text-slate-800 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300">
+              {project.title}
+            </CardTitle>
+            <CardDescription className="text-slate-600 dark:text-slate-400 leading-relaxed">
+              {project.description}
+            </CardDescription>
+          </CardHeader>
+          
+          <CardContent className="flex-grow flex flex-col justify-end">
+            <div className="flex flex-wrap gap-2 mb-4" role="list" aria-label={`Technologies used in ${project.title}`}>
+              {project.techStack.slice(0, 3).map((tech) => (
+                <Badge key={tech} variant="outline" className="text-xs" role="listitem">
+                  {tech}
+                </Badge>
+              ))}
+              {project.techStack.length > 3 && (
+                <Badge variant="outline" className="text-xs" role="listitem">
+                  +{project.techStack.length - 3} more
+                </Badge>
+              )}
             </div>
-        );
-    }
-
-
-    return (
-        <div ref={ref} className={`w-96 md:w-[500px] h-96 ${showMore ? 'h-fit' : ''} md:h-[550px] flex flex-col justify-between items-center md:mx-auto p-5 ${inView ? 'animate__animated animate__fadeIn' : ''}`}>
-            <div className="relative">
-                <Image 
-                src={project.projectImage} 
-                alt={`${project.title} screenshot`}
-                width={500}
-                height={300}
-                className="w-full h-auto"
-                />
-                {project.inProgress && <div className="w-auto h-min absolute p-1 rounded left-1 bottom-1 text-white bg-[hsl(108,15%,50%)] text-sm">In progress</div>}
-            </div>
-            <div className="text-center text-2xl">{project.title}</div>
+            
             <div className="flex gap-2">
-                <div className={`w-[90%] h-12 overflow-clip md:text-lg ${showMore ? 'h-fit' : 'overflow-hidden'}`}>{project.projectDesc}</div>
-                <Icon />
+              <Button 
+                asChild
+                size="sm" 
+                variant="outline" 
+                className="flex-1 group-hover:border-emerald-600 group-hover:text-emerald-600 transition-colors duration-300"
+              >
+                <a href={project.codeUrl} aria-label={`View source code for ${project.title}`}>
+                  <Github className="h-4 w-4 mr-2" aria-hidden="true" />
+                  Code
+                </a>
+              </Button>
+              <Button 
+                asChild
+                size="sm" 
+                className="flex-1 bg-emerald-600 hover:bg-emerald-700 transition-colors duration-300"
+              >
+                <a href={project.demoUrl} aria-label={`View live demo of ${project.title}`}>
+                  <ExternalLink className="h-4 w-4 mr-2" aria-hidden="true" />
+                  Demo
+                </a>
+              </Button>
             </div>
-            <div className={`w-full h-10 md:text-lg ${showMore ? 'h-fit' : 'overflow-clip'} overflow-y-hidden flex flex-wrap text-start gap-x-1`}>
-                <div className="font-semibold mr-2">Tech Stack: </div>
-                {project.tech_stack.map((stack, index) =>
-                    <div key={index}>{stack}{index === project.tech_stack.length - 1 ? '.' : ','} </div>
-                )}
-            </div>
-            <div className="w-32 h-8 min-h-8 rounded-md bg-[#5B7355] text-white flex justify-center hover:opacity-80 hover:cursor-pointer transition-all duration-300">
-                <div className="flex items-center justify-center gap-2">
-                    {project.github ? (
-                        <a href={project.demo_link} target="_blank" className="flex items-center justify-center gap-2">
-                            <GitHubLogoIcon className="w-6 h-6"></GitHubLogoIcon>
-                            <div className="text-sm font-title">{project.product}</div>
-                        </a>
-                    ) : (
-                        <a href={project.demo_link} target="_blank" className="flex items-center justify-center gap-2">
-                            <Link1Icon className="w-6 h-6"></Link1Icon>
-                            <div className="text-sm font-title">{project.product}</div>
-                        </a>
-                    )}
-                </div>
-
-            </div>
-        </div >
-    )
-}
+          </CardContent>
+        </div>
+      </Card>
+    </div>
+  );
+};

@@ -41,7 +41,9 @@ export const BlogCard = ({ blog }: { blog: BlogCardProps }) => {
       <div className="relative w-full">
         <Image 
           src={blog.image} 
-          alt={blog.title} 
+          alt={blog.title}
+           width={800}
+           height={450}
           className="w-full h-48 object-cover rounded-t-lg" 
         />
         <div className="absolute bottom-2 left-2 bg-white/80 dark:bg-gray-800/80 px-2 py-1 rounded text-sm">

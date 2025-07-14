@@ -45,7 +45,7 @@ export const Projects = () => {
         {
             title: "Simple Shell",
             projectDesc: "A lightweight command-line shell in C, replicating core Unix shell features such as executing commands, managing environment variables, and handling built-in functions",
-            projectImage: "shell.gif",
+            projectImage: "/shell.gif",
             tech_stack: ["C language", "Shell", "Linux", "GCC"],
             product: "GitHub",
             demo_link: "https://github.com/Muawia24/simple_shell",
@@ -55,7 +55,7 @@ export const Projects = () => {
         {
             title: "AirBnB Clone",
             projectDesc: "Project attempts to clone the the AirBnB application and website, including the database, storage, RESTful API, Web Framework, and Front End.",
-            projectImage: "airbnb_clone.png",
+            projectImage: "/airbnb_clone.png",
             tech_stack: ["Python", "Flask", "Mysql", "javascript", "CLI"],
             product: "Web App",
             demo_link: "https://github.com/Muawia24/AirBnB_clone_v3",

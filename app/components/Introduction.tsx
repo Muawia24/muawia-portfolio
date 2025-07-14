@@ -12,7 +12,7 @@ export const Introduction = () => {
                 <div className="text-lg">Built projects in React, Next, Express, Flask</div>
                 <div className="text-lg">Enjoy reading books, watching movies, and sacrificing pieces in chess!</div>
             </div>
-            <Image src="/avatar-me.png" alt="portrait" className="w-56 h-56 md:w-96 md:h-96 self-center" />
+            <Image src="/avatar-me.png" alt="portrait"width={500} height={500} className="w-56 h-56 md:w-96 md:h-96 self-center" />
         </div>
     </div>
 }

@@ -11,6 +11,9 @@ import { SiFlask, SiTypescript, SiPostgresql, SiRedux, SiIntellijidea, SiPycharm
 import { VscVscode } from "react-icons/vsc";
 import { useInView } from "react-intersection-observer";
 import { Introduction } from "./Introduction";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './Card';
+import { Badge } from './Badg';
+import { Github, ExternalLink, Mail, Phone, ChevronDown, Code, Database, Settings } from 'lucide-react'
 
 export const Herosection = () => {
     const { ref, inView } = useInView();
@@ -29,36 +32,11 @@ export const Herosection = () => {
         return () => clearInterval(interval)
     }, [SKILLS.length])
 
-    const FRONTEND_SKILLS = [
-        { icon: FaReact, name: "React" },
-        { icon: FaHtml5, name: "HTML5" },
-        { icon: FaCss3Alt, name: "CSS3" },
-        { icon: IoLogoJavascript, name: "JavaScript" },
-        { icon: SiTypescript, name: "TypeScript" },
-        { icon: RiTailwindCssFill, name: "Tailwind CSS" },
-        { icon: RiNextjsFill, name: "Next.js" },
-        { icon: FaVuejs, name: "Vue.js" },
-        { icon: SiVuetify, name: "Vuetify" },
-        { icon: SiRedux, name: "Redux" },
-        { icon: FaSass, name: "Sass" },
-    ];
-
-    const BACKEND_SKILLS = [
-        { icon: FaPython, name: "Python" },
-        { icon: SiFlask, name: "Flask" },
-        { icon: FaNodeJs, name: "Node.js" },
-        { icon: FaJava, name: "Java" },
-        { icon: SiSpringboot, name: "Spring Boot" },
-        { icon: AiOutlineDotNet, name: ".NET" },
-    ];
-
-    const DEVOPS_SKILLS = [
-        { icon: SiPostgresql, name: "PostgreSQL" },
-        { icon: DiMongodb, name: "MongoDB" },
-        { icon: VscVscode, name: "VS Code" },
-        { icon: SiPycharm, name: "PyCharm" },
-        { icon: SiIntellijidea, name: "IntelliJ" },
-    ];
+    const skills = {
+    frontend: ["React", "HTML5", "CSS3", "JavaScript", "TypeScript", "Tailwind CSS", "Next.js", "Vue.js", "Vuetify", "Redux", "Sass"],
+    backend: ["Python", "Flask", "Node.js", "Java", "Spring Boot", ".NET"],
+    tools: ["PostgreSQL", "MongoDB", "VS Code", "PyCharm", "IntelliJ"]
+  }
 
 
     const renderSkillSection = (title: string, skills: { icon: IconType, name: string }[]) => (
@@ -99,11 +77,68 @@ export const Herosection = () => {
 
             {/* <div className="hidden md:flex w-96 h-96 absolute bg-red-100 right-32 top-72"></div> */}
 
-            <div className="w-4/5 my-10 md:mt-0 md:w-2/3 lg:w-1/2 p-5">
-                {renderSkillSection("Frontend", FRONTEND_SKILLS)}
-                {renderSkillSection("Backend", BACKEND_SKILLS)}
-                {renderSkillSection("DevOps & Tools", DEVOPS_SKILLS)}
+            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800" aria-labelledby="skills-heading">
+          <div className="max-w-7xl mx-auto">
+            <h2 id="skills-heading" className="text-4xl font-bold text-center text-slate-800 dark:text-white mb-16 font-title">
+              Technical Skills
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg">
+                <CardHeader className="text-center">
+                  <div className="w-16 h-16 bg-emerald-100 dark:bg-emerald-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                    <Code className="h-8 w-8 text-emerald-600 dark:text-emerald-400" />
+                  </div>
+                  <CardTitle className="text-2xl text-slate-800 dark:text-white">Frontend</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2" role="list" aria-label="Frontend technologies">
+                    {skills.frontend.map((skill) => (
+                      <Badge key={skill} variant="secondary" className="hover:bg-emerald-100 hover:text-emerald-800 transition-colors duration-200" role="listitem">
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg">
+                <CardHeader className="text-center">
+                  <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                    <Database className="h-8 w-8 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <CardTitle className="text-2xl text-slate-800 dark:text-white">Backend</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2" role="list" aria-label="Backend technologies">
+                    {skills.backend.map((skill) => (
+                      <Badge key={skill} variant="secondary" className="hover:bg-blue-100 hover:text-blue-800 transition-colors duration-200" role="listitem">
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg">
+                <CardHeader className="text-center">
+                  <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300" aria-hidden="true">
+                    <Settings className="h-8 w-8 text-purple-600 dark:text-purple-400" />
+                  </div>
+                  <CardTitle className="text-2xl text-slate-800 dark:text-white">DevOps & Tools</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="flex flex-wrap gap-2" role="list" aria-label="DevOps and tools">
+                    {skills.tools.map((skill) => (
+                      <Badge key={skill} variant="secondary" className="hover:bg-purple-100 hover:text-purple-800 transition-colors duration-200" role="listitem">
+                        {skill}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
             </div>
+          </div>
+        </section>
             <Introduction />
         </div>
     );

@@ -3,7 +3,18 @@ import { GitHubLogoIcon, Link1Icon } from "@radix-ui/react-icons";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import { useState } from "react";
+import { 
+  Card, 
+  CardContent, 
+  CardDescription, 
+  CardHeader, 
+  CardTitle 
+} from './Card';
+import { Badge } from "./Badg";
+import { Github, ExternalLink } from 'lucide-react';
+import { Button } from './Button';
 import Image from "next/image";
+import Link from "next/link";
 
 export interface BlogCardProps {
   title: string;
@@ -32,60 +43,43 @@ export const BlogCard = ({ blog }: { blog: BlogCardProps }) => {
   };
 
   return (
-    <div 
+     <div 
       ref={ref} 
-      className={`w-96 md:w-[500px] ${showMore ? 'h-fit' : 'h-96'} md:h-[550px] flex flex-col justify-between items-center md:mx-auto p-5 ${
-        inView ? 'animate__animated animate__fadeIn' : ''
+      className={`w-full md:w-[500px] transition-all duration-300 ${
+        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
     >
-      <div className="relative w-full">
-        <Image 
-          src={blog.image} 
-          alt={blog.title}
-           width={800}
-           height={450}
-          className="w-full h-48 object-cover rounded-t-lg" 
-        />
-        <div className="absolute bottom-2 left-2 bg-white/80 dark:bg-gray-800/80 px-2 py-1 rounded text-sm">
-          {blog.date} · {blog.readTime}
-        </div>
-      </div>
-      
-      <div className="text-center text-2xl font-title mt-2">{blog.title}</div>
-      
-      <div className="flex gap-2 w-full">
-        <div className={`w-[90%] text-lg ${showMore ? 'h-fit' : 'h-12 overflow-hidden'}`}>
-          {blog.description}
-        </div>
-        <Icon />
-      </div>
-      
-      <div className={`w-full ${showMore ? 'h-fit' : 'h-10 overflow-hidden'} flex flex-wrap gap-2`}>
-        {blog.tags.map((tag, index) => (
-          <span 
-            key={index} 
-            className="px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-      
-      <div className="w-32 h-8 min-h-8 rounded-md bg-[#5B7355] text-white flex justify-center hover:opacity-80 hover:cursor-pointer transition-all duration-300">
-        <a 
-          href={blog.link} 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 w-full"
-        >
-          {blog.external ? (
-            <Link1Icon className="w-5 h-5" />
-          ) : (
-            <GitHubLogoIcon className="w-5 h-5" />
-          )}
-          <span className="text-sm font-title">Read More</span>
-        </a>
-      </div>
+      <Link
+      href={blog.link}
+      className="block group"
+      aria-label={`Read Article: ${blog.title}`}
+      {...(blog.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
+        <Card className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg">
+          <CardHeader>
+            <div className="flex justify-between items-start mb-2">
+              <div className="text-sm text-slate-500 dark:text-slate-400">
+                <time dateTime={blog.date}>{blog.date}</time> · {blog.readTime}
+              </div>
+            </div>
+            <CardTitle className="text-xl text-slate-800 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors duration-300 leading-tight">
+                {blog.title}
+            </CardTitle>
+            <CardDescription className="text-slate-600 dark:text-slate-400 leading-relaxed">
+              {blog.description}
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-wrap gap-2" role="list" aria-label={`Tags for blog: ${blog.title}`}>
+              {blog.tags.map((tag) => (
+              <Badge key={tag} variant="secondary" className="text-xs hover:bg-emerald-100 hover:text-emerald-800 transition-colors duration-200" role="listitem">
+                {tag}
+              </Badge>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      </Link>
     </div>
   );
 };
@@ -93,7 +87,7 @@ export const BlogCard = ({ blog }: { blog: BlogCardProps }) => {
 export const Blog = () => {
   const BLOGS: BlogCardProps[] = [
     {
-      title: "what happens when you type https://www.google.com in your browser and press Enter.",
+      title: "what happens when you type https://www.google.com in your browser.",
       description: "Have you ever wondered what’s going on behind the scenes when you browse a URL on the internet?",
       image: "/How-Load-Balancer-works.jpg",
       tags: ["DNS", "Web Infrastructure Design", "HTTPS", "Web server"],
@@ -135,11 +129,17 @@ export const Blog = () => {
   ];
 
   return (
-    <div id="blog" className="w-full flex flex-col md:flex md:flex-row md:flex-wrap items-center mt-10 md:px-10 gap-y-5 font-secondary">
-      <div className="text-3xl md:text-6xl w-full text-center font-title mb-10">Latest Articles</div>
-      {BLOGS.map((blog, index) => (
-        <BlogCard key={index} blog={blog} />
-      ))}
-    </div>
+    <section id="blog" className="py-20 px-4 sm:px-6 lg:px-8" aria-labelledby="blog-heading">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-4xl md:text-6xl w-full text-center mb-16 font-title">
+          Latest Articles
+        </h2>
+        <div className="grid md:grid-cols-2 gap-8">
+          {BLOGS.map((blog, index) => (
+            <BlogCard key={`${blog.title}-${index}`} blog={blog} />
+          ))}
+        </div>
+      </div>
+    </section>
   );
 };

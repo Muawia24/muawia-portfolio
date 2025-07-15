@@ -15,6 +15,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './Car
 import { Badge } from './Badg';
 import { Button } from './Button';
 import { Github, ExternalLink, Mail, Phone, ChevronDown, Code, Database, Settings } from 'lucide-react'
+import Link from 'next/link';
 
 export const Herosection = () => {
     const [isVisible, setIsVisible] = useState(false)
@@ -39,9 +40,9 @@ export const Herosection = () => {
     }, [SKILLS.length])
 
     const skills = {
-    frontend: ["React", "HTML5", "CSS3", "JavaScript", "TypeScript", "Tailwind CSS", "Next.js", "Vue.js", "Vuetify", "Redux", "Sass"],
-    backend: ["Python", "Flask", "Node.js", "Java", "Spring Boot", ".NET"],
-    tools: ["PostgreSQL", "MongoDB", "VS Code", "PyCharm", "IntelliJ"]
+    frontend: ["JavaScript", "React", "HTML5", "CSS3",  "TypeScript", "Tailwind CSS", "Next.js"],
+    backend: ["RESTful", "Flask", "Node.js", "FastAPI", "MongoDB", "mySQL","Redis", "Bull", "JavaScript", "Python", "JWT"],
+    tools: ["CI/CD", "Docker", "Linux", "Git", "Bash Scripting"]
   }
 
 
@@ -67,43 +68,9 @@ export const Herosection = () => {
             <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8" aria-labelledby="hero-heading">
                       <div className="max-w-7xl mx-auto">
                         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-                          <div className={`lg:w-1/2 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                            <div className="text-lg text-slate-600 dark:text-slate-400 mb-4 font-medium">
-                              Hi, I'm
-                            </div>
-                            <h1 id="hero-heading" className="text-6xl lg:text-7xl font-bold text-slate-800 dark:text-white mb-6 leading-tight font-title">
-                              Ahmed <span className="text-emerald-600 dark:text-emerald-400 font-title">Muawia</span>
-                            </h1>
-                            <div className="text-2xl lg:text-3xl text-slate-700 dark:text-slate-300 mb-8 font-light">
-                              A <span className="font-semibold text-emerald-600 dark:text-emerald-400">Software Engineer</span> specializing in building exceptional PWAs and full-stack applications
-                            </div>
-                            <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed max-w-2xl">
-                              Proficient in Python, JavaScript and TypeScript. Built projects in React, Next, Express, Flask. 
-                              Passionate about creating scalable solutions and delivering outstanding user experiences.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4">
-                              <Button 
-                                size="lg" 
-                                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                                aria-label="View my work and projects"
-                              >
-                                View My Work
-                                <ChevronDown className="ml-2 h-5 w-5" aria-hidden="true" />
-                              </Button>
-                              <Button 
-                                variant="outline" 
-                                size="lg"
-                                className="border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105"
-                                aria-label="Get in touch with me"
-                              >
-                                Get In Touch
-                                <Mail className="ml-2 h-5 w-5" aria-hidden="true" />
-                              </Button>
-                            </div>
-                          </div>
-                          <div className={`lg:w-1/2 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                            <div className={`lg:w-1/2 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                             <div className="relative">
-                              <div className="w-80 h-80 lg:w-96 lg:h-96 mx-auto rounded-full overflow-hidden border-8 border-white dark:border-slate-700 shadow-2xl transition-transform duration-300 hover:scale-105">
+                              <div className="w-80 h-80 lg:w-96 lg:h-96 mx-auto rounded-full overflow-hidden  dark:border-slate-700 shadow-2xl transition-transform duration-300 hover:scale-105">
                                 <img 
                                   src="/DSC_4379.JPG" 
                                   alt="Ahmed Muawia - Software Engineer" 
@@ -111,20 +78,57 @@ export const Herosection = () => {
                                   loading="lazy"
                                 />
                               </div>
-                              <div className="absolute -bottom-4 -right-4 bg-emerald-600 text-white p-4 rounded-full shadow-lg animate-bounce" aria-hidden="true">
-                                <Code className="h-8 w-8" />
-                              </div>
+                              
                             </div>
                           </div>
+                          <div className={`lg:w-1/2 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                            <div className="animate__animated animate__fadeInDown">
+                              Hi, I'm
+                            </div>
+                            <h1 id="hero-heading" className="text-start text-4xl md:text-6xl font-title">
+                              Ahmed Muawia
+                            </h1>
+                            <div className="text-2xl lg:text-3xl text-slate-700 dark:text-slate-300 mb-8 font-light">
+                              A <span className="font-semibold text-black-800 dark:text-emerald-700">Software Engineer</span> specializing in building solid RESTful APIs and full-stack applications
+                            </div>
+                            <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 leading-relaxed max-w-2xl">
+                              Proficient in Python, JavaScript and C Language. Built projects in Node, Flask, FastAPI, Express, React, Next. 
+                              Passionate about solving real world problems with AI-Powered solutions and delivering outstanding user experiences.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4">
+                                <Link href="#projects" passHref>
+                                    <Button 
+                                        size="lg" 
+                                        className="bg-emerald-800 hover:bg-emerald-700 text-white px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                                        aria-label="View my work and projects"
+                                    >
+                                        View My Work
+                                        <ChevronDown className="ml-2 h-5 w-5" aria-hidden="true" />
+                                    </Button>
+                                </Link>
+                                <Link href="#contact" passHref>
+                                    <Button 
+                                        variant="outline" 
+                                        size="lg"
+                                        className="border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105"
+                                        aria-label="Get in touch with me"
+                                    >
+                                        Get In Touch
+                                        <Mail className="ml-2 h-5 w-5" aria-hidden="true" />
+                                    </Button>
+                                </Link>
+                            </div>
+                          </div>
+
                         </div>
                       </div>
                     </section>
 
             {/* <div className="hidden md:flex w-96 h-96 absolute bg-red-100 right-32 top-72"></div> */}
 
-            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-slate-800" aria-labelledby="skills-heading">
+            <section className="py-20 px-4 sm:px-6 lg:px-8 bg-card " aria-labelledby="skills-heading">
           <div className="max-w-7xl mx-auto">
-            <h2 id="skills-heading" className="text-4xl font-bold text-center text-slate-800 dark:text-white mb-16 font-title">
+            <h2 id="skills-heading" className="text-4xl font-bold text-center dark:text-white mb-16 font-title">
               Technical Skills
             </h2>
             <div className="grid md:grid-cols-3 gap-8">

@@ -94,7 +94,7 @@ export const Contact = () => {
     <section 
       id="contact" 
       ref={ref} 
-      className={`py-20 bg-gray-50 dark:bg-gray-900 ${inView ? 'animate__animated animate__fadeIn' : ''}`}
+      className={`py-20 bg-card dark:bg-gray-900 ${inView ? 'animate__animated animate__fadeIn' : ''}`}
     >
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-12 font-title">

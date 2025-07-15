@@ -1,5 +1,4 @@
 import { useInView } from "react-intersection-observer"
-import Image from "next/image";
 
 export const Introduction = () => {
     const { ref, inView } = useInView();

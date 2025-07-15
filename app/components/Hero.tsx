@@ -1,20 +1,10 @@
 "use client";
-import Image from 'next/image';
 import { useEffect, useState } from "react";
-import { IconType } from "react-icons";
-import { AiOutlineDotNet } from "react-icons/ai";
-import { DiMongodb } from "react-icons/di";
-import { FaCss3Alt, FaHtml5, FaJava, FaNodeJs, FaPython, FaReact, FaSass, FaVuejs } from "react-icons/fa";
-import { IoLogoJavascript } from "react-icons/io";
-import { RiTailwindCssFill, RiNextjsFill } from "react-icons/ri";
-import { SiFlask, SiTypescript, SiPostgresql, SiRedux, SiIntellijidea, SiPycharm, SiSpringboot, SiVuetify } from "react-icons/si";
-import { VscVscode } from "react-icons/vsc";
-import { useInView } from "react-intersection-observer";
 import { Introduction } from "./Introduction";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './Card';
+import { Card, CardContent, CardHeader, CardTitle } from './Card';
 import { Badge } from './Badg';
 import { Button } from './Button';
-import { Github, ExternalLink, Mail, Phone, ChevronDown, Code, Database, Settings } from 'lucide-react'
+import { Github, Mail, ChevronDown, Code, Database, Settings } from 'lucide-react'
 import Link from 'next/link';
 
 export const Herosection = () => {
@@ -23,7 +13,6 @@ export const Herosection = () => {
     useEffect(() => {
         setIsVisible(true)
       }, [])
-    const { ref, inView } = useInView();
     const [textIndex, setTextIndex] = useState<number>(0);
     const SKILLS = [
         <span key="pwa" className="w-56 animate__animated animate__fadeInDown">PWAs</span>,
@@ -44,23 +33,6 @@ export const Herosection = () => {
     backend: ["RESTful", "Flask", "Node.js", "FastAPI", "MongoDB", "mySQL","Redis", "Bull", "JavaScript", "Python", "JWT"],
     tools: ["CI/CD", "Docker", "Linux", "Git", "Bash Scripting"]
   }
-
-
-    const renderSkillSection = (title: string, skills: { icon: IconType, name: string }[]) => (
-        <div className="mb-10">
-            <h3 className="text-xl font-semibold mb-4 text-center border-b pb-2 font-title">{title}</h3>
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-4">
-                {skills.map((skill, index) => (
-                    <div key={index} className="flex flex-col items-center">
-                        <skill.icon 
-                            className="w-10 h-10 md:w-12 md:h-12 p-0 opacity-50 hover:opacity-90 transition-all duration-400" 
-                        />
-                        <span className="text-xs mt-2 text-center">{skill.name}</span>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
 
 
     return (
@@ -99,7 +71,7 @@ export const Herosection = () => {
                                 <Link href="#projects" passHref>
                                     <Button 
                                         size="lg" 
-                                        className="bg-emerald-800 hover:bg-emerald-700 text-white px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                                        className="bg-[#5B7355] hover:bg-emerald-700 text-white px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
                                         aria-label="View my work and projects"
                                     >
                                         View My Work
@@ -110,7 +82,7 @@ export const Herosection = () => {
                                     <Button 
                                         variant="outline" 
                                         size="lg"
-                                        className="border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105"
+                                        className="border-emerald-600 text-emerald-600 hover:bg-[#5B7355] hover:text-white px-8 py-3 text-lg font-medium transition-all duration-300 hover:scale-105"
                                         aria-label="Get in touch with me"
                                     >
                                         Get In Touch
@@ -123,8 +95,6 @@ export const Herosection = () => {
                         </div>
                       </div>
                     </section>
-
-            {/* <div className="hidden md:flex w-96 h-96 absolute bg-red-100 right-32 top-72"></div> */}
 
             <section className="py-20 px-4 sm:px-6 lg:px-8 bg-card " aria-labelledby="skills-heading">
           <div className="max-w-7xl mx-auto">

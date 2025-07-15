@@ -42,7 +42,7 @@ export const Contact = () => {
     }
   };
 
-  // In your form JSX:
+
   if (submitted) {
     return (
       <div className="text-center py-8">

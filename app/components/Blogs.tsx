@@ -1,5 +1,4 @@
 "use client";
-import { GitHubLogoIcon, Link1Icon } from "@radix-ui/react-icons";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import { useState } from "react";
@@ -11,9 +10,6 @@ import {
   CardTitle 
 } from './Card';
 import { Badge } from "./Badg";
-import { Github, ExternalLink } from 'lucide-react';
-import { Button } from './Button';
-import Image from "next/image";
 import Link from "next/link";
 
 export interface BlogCardProps {
@@ -30,17 +26,6 @@ export interface BlogCardProps {
 export const BlogCard = ({ blog }: { blog: BlogCardProps }) => {
   const [showMore, setShowMore] = useState(false);
   const { ref, inView } = useInView();
-
-  const Icon = () => {
-    return (
-      <div 
-        className="w-5 h-5 hover:cursor-pointer hover:opacity-50" 
-        onClick={() => setShowMore(!showMore)}
-      >
-        {showMore ? <FaAngleUp /> : <FaAngleDown />}
-      </div>
-    );
-  };
 
   return (
      <div 

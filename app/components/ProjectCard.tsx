@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import { 
@@ -24,7 +23,6 @@ export interface ProjectCardProps {
 }
 
 export const ProjectCard = ({ project }: { project: ProjectCardProps }) => {
-  const [showMore, setShowMore] = useState(false);
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.1
@@ -92,7 +90,7 @@ export const ProjectCard = ({ project }: { project: ProjectCardProps }) => {
                 <Button 
                   asChild
                   size="sm" 
-                  className="flex-1 bg-emerald-600 hover:bg-emerald-700 transition-colors duration-300"
+                  className="flex-1 bg-[#5B7355] hover:bg-emerald-600 text-amber-100 transition-colors duration-300"
                 >
                   <a href={project.demoUrl} aria-label={`View live demo of ${project.title}`}>
                     <ExternalLink className="h-4 w-4 mr-2" aria-hidden="true" />

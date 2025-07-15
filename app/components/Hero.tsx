@@ -4,7 +4,7 @@ import { Introduction } from "./Introduction";
 import { Card, CardContent, CardHeader, CardTitle } from './Card';
 import { Badge } from './Badg';
 import { Button } from './Button';
-import { Github, Mail, ChevronDown, Code, Database, Settings } from 'lucide-react'
+import { Mail, ChevronDown, Code, Database, Settings } from 'lucide-react'
 import Link from 'next/link';
 
 export const Herosection = () => {
@@ -14,6 +14,7 @@ export const Herosection = () => {
         setIsVisible(true)
       }, [])
     const [textIndex, setTextIndex] = useState<number>(0);
+    textIndex == 0;
     const SKILLS = [
         <span key="pwa" className="w-56 animate__animated animate__fadeInDown">PWAs</span>,
         <span key="webapps" className="w-56 animate__animated animate__fadeInUp">web apps</span>,
@@ -55,7 +56,7 @@ export const Herosection = () => {
                           </div>
                           <div className={`lg:w-1/2 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                             <div className="animate__animated animate__fadeInDown">
-                              Hi, I'm
+                              Hi, I&apos;m
                             </div>
                             <h1 id="hero-heading" className="text-start text-4xl md:text-6xl font-title">
                               Ahmed Muawia

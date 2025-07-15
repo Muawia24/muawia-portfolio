@@ -1,5 +1,4 @@
 "use client";
-import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import { useState } from "react";
 import { 
@@ -24,7 +23,6 @@ export interface BlogCardProps {
 }
 
 export const BlogCard = ({ blog }: { blog: BlogCardProps }) => {
-  const [showMore, setShowMore] = useState(false);
   const { ref, inView } = useInView();
 
   return (

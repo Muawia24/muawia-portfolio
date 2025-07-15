@@ -39,7 +39,7 @@ export const Navbar = () => {
     className="hover:text-[#5C7356]"
   />
   <NavLink 
-    href="https://drive.google.com/file/d/1VpALsjZ06jDAWysY82aa5WKn3GCX44yN/view?usp=drive_link" 
+    href="https://drive.google.com/file/d/1H3G81Rp4zqEe3266OR2cN9NNWh6Dnkc-/view?usp=drive_link" 
     icon={<span className="text-gray-400">$</span>} 
     text="open resume.pdf" 
     className="hover:text-[#5C7356]"

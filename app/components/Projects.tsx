@@ -8,7 +8,8 @@ export const Projects = () => {
       techStack: ["NodeJS", "Redis", "Express", "MongoDB", "Together-AI"],
       type: "Web App",
       image: "/Siento.png",
-      codeUrl: "https://github.com/Muawia24/Siento"
+      codeUrl: "https://github.com/Muawia24/Siento",
+      demoUrl: "https://www.linkedin.com/feed/update/urn:li:activity:7320814096692473856/"
     },
     {
       title: "Up & Move",

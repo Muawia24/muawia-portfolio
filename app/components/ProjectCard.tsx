@@ -74,27 +74,32 @@ export const ProjectCard = ({ project }: { project: ProjectCardProps }) => {
             </div>
             
             <div className="flex gap-2">
-              <Button 
-                asChild
-                size="sm" 
-                variant="outline" 
-                className="flex-1 group-hover:border-emerald-600 group-hover:text-emerald-600 transition-colors duration-300"
-              >
-                <a href={project.codeUrl} aria-label={`View source code for ${project.title}`}>
-                  <Github className="h-4 w-4 mr-2" aria-hidden="true" />
-                  Code
-                </a>
-              </Button>
-              <Button 
-                asChild
-                size="sm" 
-                className="flex-1 bg-emerald-600 hover:bg-emerald-700 transition-colors duration-300"
-              >
-                <a href={project.demoUrl} aria-label={`View live demo of ${project.title}`}>
-                  <ExternalLink className="h-4 w-4 mr-2" aria-hidden="true" />
-                  Demo
-                </a>
-              </Button>
+              {project.codeUrl && (
+                <Button 
+                  asChild
+                  size="sm" 
+                  variant="outline" 
+                  className="flex-1 group-hover:border-emerald-600 group-hover:text-emerald-600 transition-colors duration-300"
+                >
+                  <a href={project.codeUrl} aria-label={`View source code for ${project.title}`}>
+                    <Github className="h-4 w-4 mr-2" aria-hidden="true" />
+                    Code
+                  </a>
+                </Button>
+              )}
+
+              {project.demoUrl && (
+                <Button 
+                  asChild
+                  size="sm" 
+                  className="flex-1 bg-emerald-600 hover:bg-emerald-700 transition-colors duration-300"
+                >
+                  <a href={project.demoUrl} aria-label={`View live demo of ${project.title}`}>
+                    <ExternalLink className="h-4 w-4 mr-2" aria-hidden="true" />
+                    Demo
+                  </a>
+                </Button>
+              )}
             </div>
           </CardContent>
         </div>

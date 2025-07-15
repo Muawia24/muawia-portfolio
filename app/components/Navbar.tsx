@@ -1,5 +1,4 @@
 "use client";
-import { MixIcon, ReaderIcon, RocketIcon, Pencil2Icon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
 export const Navbar = () => {
@@ -40,7 +39,7 @@ export const Navbar = () => {
     className="hover:text-[#5C7356]"
   />
   <NavLink 
-    href="#resume" 
+    href="https://drive.google.com/file/d/1VpALsjZ06jDAWysY82aa5WKn3GCX44yN/view?usp=drive_link" 
     icon={<span className="text-gray-400">$</span>} 
     text="open resume.pdf" 
     className="hover:text-[#5C7356]"

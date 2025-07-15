@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Introduction } from "./Introduction";
 import { Card, CardContent, CardHeader, CardTitle } from './Card';
 import { Badge } from './Badg';
+import Image from 'next/image';
 import { Button } from './Button';
 import { Mail, ChevronDown, Code, Database, Settings } from 'lucide-react'
 import Link from 'next/link';
@@ -13,21 +14,6 @@ export const Herosection = () => {
     useEffect(() => {
         setIsVisible(true)
       }, [])
-    const [textIndex, setTextIndex] = useState<number>(0);
-    textIndex == 0;
-    const SKILLS = [
-        <span key="pwa" className="w-56 animate__animated animate__fadeInDown">PWAs</span>,
-        <span key="webapps" className="w-56 animate__animated animate__fadeInUp">web apps</span>,
-        <span key="apis" className="w-56 animate__animated animate__fadeInDown">RESTful APIs</span>,
-        <span key="anything" className="w-56 animate__animated animate__fadeInUp">anything you want!!!</span>,
-    ];
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setTextIndex(prevIndex => (prevIndex + 1) % SKILLS.length)
-        }, 3000);
-        return () => clearInterval(interval)
-    }, [SKILLS.length])
 
     const skills = {
     frontend: ["JavaScript", "React", "HTML5", "CSS3",  "TypeScript", "Tailwind CSS", "Next.js"],
@@ -44,11 +30,14 @@ export const Herosection = () => {
                             <div className={`lg:w-1/2 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                             <div className="relative">
                               <div className="w-80 h-80 lg:w-96 lg:h-96 mx-auto rounded-full overflow-hidden  dark:border-slate-700 shadow-2xl transition-transform duration-300 hover:scale-105">
-                                <img 
-                                  src="/DSC_4379.JPG" 
-                                  alt="Ahmed Muawia - Software Engineer" 
+                                <Image
+                                  src="/DSC_4379.JPG"
+                                  alt="Ahmed Muawia - Software Engineer"
+                                  width={384}
+                                  height={384}
                                   className="w-full h-full object-cover"
-                                  loading="lazy"
+                                  priority={true}
+                                  quality={85}
                                 />
                               </div>
                               

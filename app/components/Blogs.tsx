@@ -1,6 +1,5 @@
 "use client";
 import { useInView } from "react-intersection-observer";
-import { useState } from "react";
 import { 
   Card, 
   CardContent, 

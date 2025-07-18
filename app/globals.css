@@ -25,4 +25,5 @@
 }
 .animate-blink {
   animation: blink 1s step-end infinite;
+  -webkit-animation: blink 1s step-end infinite;
 }

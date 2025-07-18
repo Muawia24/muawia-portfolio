@@ -1,7 +1,8 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from "next/link";
 import { HamburgerMenuIcon, Cross1Icon } from '@radix-ui/react-icons';
+
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

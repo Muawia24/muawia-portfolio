@@ -5,14 +5,6 @@ import { HamburgerMenuIcon, Cross1Icon } from '@radix-ui/react-icons';
 
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isCursorVisible, setIsCursorVisible] = useState(true);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsCursorVisible(prev => !prev);
-    }, 500); // Blink every 500ms
-    return () => clearInterval(interval);
-  }, []);
   
   return (
     <nav className="bg-[#D9D8D7] sticky top-0 z-50 font-display">
@@ -22,17 +14,14 @@ export const Navbar = () => {
           <div className="flex-shrink-0 w-1/3 md:w-auto"> 
             <Link 
               href="/" 
-              className="flex items-center group"
+              className="inline-flex items-center group"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              <span className="text-gray-400 mr-2 text-2xl md:text-3xl">{'$'}</span>
-              <span className="text-gray-800 group-hover:text-[#5C7356] text-xl md:text-2xl font-mono">
+              <span className="text-gray-400  text-2xl md:text-3xl">$</span>
+              <span className="inline-block text-gray-800 group-hover:text-[#5C7356] text-xl md:text-2xl font-mono">
                 ahmed_muawia
               </span>
-              <span 
-                className={`ml-2 h-5 w-3 bg-gray-800 ${isCursorVisible ? 'inline' : 'hidden'}`} 
-                aria-hidden="true"  
-              />
+              <span className="inline-block h-5 w-2 bg-gray-800 animate-blink" aria-hidden="true"/>
             </Link>
           </div>
 
